@@ -18,7 +18,22 @@ const Product = () => {
   },[])
   return (
     <div className="p-2 md:p-4 gap-2 md:gap-4 flex flex-wrap ">
-      {/* <ProductCard/> */}
+      <ProductCard product={{
+_id: "640216631c768e38422c8788",
+description: "Wireless Earbuds with upto 60 Hours Playback, 13mm Drivers and IWP Technology, 650mah C type Charging Case",
+brand: "boAt",
+image: [
+"airpodes_1677858240031.webp",
+"ad131FIAD131TypeC_1200x_1677858266874.webp",
+"FeatureImagesAD131VA_1200x_1677858298599.webp",
+"FeatureImagesAD131BV5_1677858376349.0_1200x_1677858376349.webp"
+],
+sellPrice: 1099,
+category: "airdopes",
+__v: 0,
+title: "boAt Airdopes 131",
+price: 2990
+}}/>
       <ProductCardLoading />
       <h2 className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1">
         Related Product

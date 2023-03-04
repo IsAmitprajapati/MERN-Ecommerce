@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import googleImage from "../assest/GoogleLogo.png";
 import { MdOutlineStarHalf, MdOutlineStarPurple500 } from "react-icons/md";
 
-const ProductCard = ({ image }) => {
+const ProductCard = ({ product }) => {
   const [isMagnified, setIsMagnified] = useState(false);
   const [imageCursorPosition, setImageCursorPosition] = useState({
     x: 0,
@@ -22,34 +22,40 @@ const ProductCard = ({ image }) => {
     setImageCursorPosition({ x, y });
     console.log(left, top, width, height);
   };
+  console.log(product);
+
+  const [productImage, setProductImage] = useState(
+    process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + product.image[0]
+  );
+
+  const handleMouseEnterProduct = (imgName) => {
+    setProductImage(process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + imgName);
+  };
   return (
     <div className="md:flex w-full max-w-6xl md:h-auto gap-2 relative">
       <div className="md:w-1/2 min-h-[300px] min-w-[300px] max-h-96 max-w-sm bg-slate-100 rounded p-3 sticky">
         <img
-          src={googleImage}
+          src={productImage}
           className="h-full w-full cursor-crosshair"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
+          loading="lazy"
         />
       </div>
       <div className="flex md:flex-col gap-2  md:justify-center items-center my-2 md:-order-1 max-h-96">
-        <img
-          src=""
-          className="w-16 md:w-20 h-16 md:h-20 bg-slate-400 rounded"
-        />
-        <img
-          src=""
-          className="w-16 md:w-20 h-16 md:h-20 bg-slate-400 rounded"
-        />
-        <img
-          src=""
-          className="w-16 md:w-20 h-16 md:h-20 bg-slate-400 rounded"
-        />
-        <img
-          src=""
-          className="w-16 md:w-20 h-16 md:h-20 bg-slate-400 rounded"
-        />
+        {product.image.map((el) => {
+          return (
+            <img
+              key={el}
+              src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el}
+              className="w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer"
+              onMouseEnter={() => handleMouseEnterProduct(el)}
+              onClick={() => handleMouseEnterProduct(el)}
+              loading="lazy"
+            />
+          );
+        })}
       </div>
       <div className="md:w-1/2 lg:ml-4 relative">
         {/* isMagnified display image  */}
@@ -58,7 +64,7 @@ const ProductCard = ({ image }) => {
             <div
               className="w-full h-full bg-slate-400 scale-110"
               style={{
-                background: `url(${googleImage})`,
+                background: `url(${productImage})`,
                 backgroundPosition: `${imageCursorPosition.x * 100}% ${
                   imageCursorPosition.y * 100
                 }%`,
@@ -69,12 +75,12 @@ const ProductCard = ({ image }) => {
 
         <div className="py-3">
           <p className="bg-red-100 inline-block px-3 rounded-full">
-            Brand name
+            {product.brand}
           </p>
           <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl">
-            Rockerz 103 Pro
+            {product.title}
           </h2>
-          <p className="text-base text-slate-400">WIRELESS EARBUDS</p>
+          <p className="text-base text-slate-400 uppercase">{product.category}</p>
           <div className="flex text-red-600">
             <MdOutlineStarPurple500 />
             <MdOutlineStarPurple500 />
@@ -85,10 +91,12 @@ const ProductCard = ({ image }) => {
 
           <div className="flex gap-3 my-2 items-center">
             <p className="font-bold text-xl md:text-2xl lg:text-3xl text-red-600">
-              <span>₹</span>200
+              <span>₹</span>
+              {product.sellPrice}
             </p>
             <p className="text-lg text-slate-500 line-through">
-              <span>₹</span>1000
+              <span>₹</span>
+              {product.price}
             </p>
           </div>
 
@@ -103,14 +111,7 @@ const ProductCard = ({ image }) => {
 
           <div>
             <p className="text-slate-700 font-semibold">Description : </p>
-            <p>
-              Let the noise of the world drown as you jam to your rhythm with
-              Airdopes 141. Equipped with 8mm drivers, these dope wireless
-              earbuds make your playlist sound better with crystal clear audio
-              quality and powerful bass. Experience seamless calling and be
-              clearly heard with ENx™ Technology.
-
-            </p>
+            <p>{product.description}</p>
           </div>
         </div>
       </div>

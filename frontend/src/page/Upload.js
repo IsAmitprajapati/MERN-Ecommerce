@@ -10,7 +10,7 @@ const Upload = () => {
     description: "",
     brand: "",
     image: [],
-    actualPrice: "",
+    price: "",
     sellPrice: "",
     category: "",
   });
@@ -39,13 +39,14 @@ const Upload = () => {
         console.log(fromData);
         console.log(dataRes);
 
+
         //save to useState
         setData((preve) => {
           return {
             ...preve,
             image: [
               ...preve.image,
-              `${process.env.REACT_APP_SERVER_DOMAIN}/upload/image/${dataRes.fileName}`,
+              dataRes.fileName,
             ],
           };
         });
@@ -60,9 +61,9 @@ const Upload = () => {
     e.preventDefault();
     console.log(data);
 
-    const { title, image, actualPrice, sellPrice, category } = data;
+    const { title, image, price, sellPrice, category } = data;
 
-    if (title && image[0] && actualPrice && sellPrice && category) {
+    if (title && image[0] && price && sellPrice && category) {
       const res = await fetch(
         `${process.env.REACT_APP_SERVER_DOMAIN}/product/save`,
         {
@@ -82,11 +83,13 @@ const Upload = () => {
         description: "",
         brand: "",
         image: [],
-        actualPrice: "",
+        price: "",
         sellPrice: "",
         category: "",
       });
+
     }
+    window.scrollTo({top : 0, behavior : "smooth"})
   };
   console.log(data);
   const handleDeleteImage = (e) => {
@@ -175,17 +178,17 @@ const Upload = () => {
             {data.image[0] ? (
               <>
                 <img
-                  src={data.image[data.image.length - 1]}
+                  src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE+data.image[data.image.length - 1]}
                   className="h-full"
                 />
                 <div
-                  className="absolute bottom-0 right-0 text-2xl py-1 px-2 rounded-t-full rounded-l-full text-white bg-red-500"
+                  className="absolute bottom-0 right-0 text-2xl py-1 px-2 rounded-t-full rounded-l-full text-white bg-red-600 hover:bg-red-700"
                   onClick={handleDeleteImage}
                 >
                   <MdOutlineDelete />
                 </div>
                 <div
-                  className="absolute bottom-0 left-0 text-2xl py-1 px-2 rounded-t-full rounded-r-full text-white bg-red-500"
+                  className="absolute bottom-0 left-0 text-2xl py-1 px-2 rounded-t-full rounded-r-full text-white bg-red-600 hover:bg-red-700"
                   onClick={handleUplaod}
                 >
                   <MdOutlineAddCircleOutline />
@@ -218,7 +221,7 @@ const Upload = () => {
                 {data.image.map((el,index) => {
                   return (
                     <div className="w-16 h-16 border object-fit hover:bg-slate-200 rounded" key={"image1"+index}>
-                      <img src={el} className="w-full h-full" />
+                      <img src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE+el} className="w-full h-full" />
                     </div>
                   );
                 })}
@@ -227,18 +230,18 @@ const Upload = () => {
           )}
 
           <div className="flex flex-col md:flex-row md:items-center md:gap-3">
-            <label htmlFor="actualPrice " className="whitespace-nowrap">
-              Actual Price<span className="text-red-600">*</span> :{" "}
+            <label htmlFor="price " className="whitespace-nowrap">
+              Price<span className="text-red-600">*</span> :{" "}
             </label>
             <input
               type={"number"}
-              id="actualPrice"
+              id="price"
               className="bg-slate-100 w-full py-1 px-2 outline-none border rounded"
               min={0}
               pattern="[0-9]*"
               required
-              name="actualPrice"
-              value={data.actualPrice}
+              name="price"
+              value={data.price}
               onChange={handleOnChange}
             />
 

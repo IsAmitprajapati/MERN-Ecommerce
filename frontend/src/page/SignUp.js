@@ -5,6 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoading } from "../redux/loadingSlice";
+import ImageToBase64 from "../utility/ImageToBase64";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,24 +30,26 @@ const SignUp = () => {
   const handleUploadProfileImage = async (e) => {
     const file = e.target.files[0];
 
-    const fromData = new FormData();
-    fromData.append("image", file);
-    console.log(process.env.REACT_APP_SERVER_DOMAIN);
+    // const fromData = new FormData();
+    // fromData.append("image", file);
+    // console.log(process.env.REACT_APP_SERVER_DOMAIN);
 
-    const uploadServer = await fetch(
-      `${process.env.REACT_APP_SERVER_DOMAIN}/upload/image`,
-      {
-        method: "POST",
-        body: fromData,
-      }
-    );
-    const data = await uploadServer.json();
-      console.log(data)
+    // const uploadServer = await fetch(
+    //   `${process.env.REACT_APP_SERVER_DOMAIN}/upload/image`,
+    //   {
+    //     method: "POST",
+    //     body: fromData,
+    //   }
+    // );
+    // const data = await uploadServer.json();
+    //   console.log(data)
     //save to useState
+
+    const data = await ImageToBase64(file)
     setData((preve) => {
       return {
         ...preve,
-        image: `${process.env.REACT_APP_SERVER_DOMAIN}/upload/image/${data.fileName}`,
+        image: data,
       };
     });
   };

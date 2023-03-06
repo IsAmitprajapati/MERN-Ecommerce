@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import googleImage from "../assest/GoogleLogo.png";
 import { MdOutlineStarHalf, MdOutlineStarPurple500 } from "react-icons/md";
 
@@ -8,7 +8,6 @@ const ProductCard = ({ product }) => {
     x: 0,
     y: 0,
   });
-
   const handleMouseEnter = () => {
     setIsMagnified(true);
   };
@@ -22,38 +21,60 @@ const ProductCard = ({ product }) => {
     setImageCursorPosition({ x, y });
     console.log(left, top, width, height);
   };
-  console.log(product);
 
+  //change image in mouse enter on another project
   const [productImage, setProductImage] = useState(
     process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + product.image[0]
   );
+  useEffect(() => {
+    setProductImage(
+      process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + product.image[0]
+    );
+  }, [product]);
 
-  const handleMouseEnterProduct = (imgName) => {
-    setProductImage(process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + imgName);
-  };
+  const handleMouseEnterProduct = useCallback(
+    (imgName) => {
+      setProductImage(process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + imgName);
+    },
+    [product]
+  );
+
+  // price in form of india currency
+  const priceIndia = product.price.toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "INR",
+  });
+  const sellPriceIndia = product.sellPrice.toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "INR",
+  });
   return (
-    <div className="md:flex w-full max-w-6xl md:h-auto gap-2 relative">
-      <div className="md:w-1/2 min-h-[300px] min-w-[300px] max-h-96 max-w-sm bg-slate-100 rounded p-3 sticky">
+    <div className="md:flex w-full max-w-6xl md:h-auto gap-2 relative ">
+      <div className="md:w-1/2 min-h-[300px] min-w-[300px] max-h-96 max-w-sm bg-slate-100 rounded p-3 sticky flex justify-center items-center">
         <img
           src={productImage}
-          className="h-full w-full cursor-crosshair"
+          className="h-full cursor-crosshair mix-blend-multiply object-scale-down"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
           loading="lazy"
         />
       </div>
-      <div className="flex md:flex-col gap-2  md:justify-center items-center my-2 md:-order-1 max-h-96">
+      <div className="flex md:flex-col gap-3  md:justify-start items-center  my-2 md:-order-1 max-h-96">
         {product.image.map((el) => {
           return (
-            <img
-              key={el}
-              src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el}
-              className="w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer"
-              onMouseEnter={() => handleMouseEnterProduct(el)}
-              onClick={() => handleMouseEnterProduct(el)}
-              loading="lazy"
-            />
+            <div className="w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer flex items-center justify-center p-1">
+              <img
+                key={el}
+                src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el}
+                className="h-full mix-blend-multiply object-scale-down"
+                onMouseEnter={() => handleMouseEnterProduct(el)}
+                onClick={() => handleMouseEnterProduct(el)}
+                loading="lazy"
+              />
+            </div>
           );
         })}
       </div>
@@ -80,7 +101,9 @@ const ProductCard = ({ product }) => {
           <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl">
             {product.title}
           </h2>
-          <p className="text-base text-slate-400 uppercase">{product.category}</p>
+          <p className="text-base text-slate-400 uppercase">
+            {product.category}
+          </p>
           <div className="flex text-red-600">
             <MdOutlineStarPurple500 />
             <MdOutlineStarPurple500 />
@@ -91,12 +114,12 @@ const ProductCard = ({ product }) => {
 
           <div className="flex gap-3 my-2 items-center">
             <p className="font-bold text-xl md:text-2xl lg:text-3xl text-red-600">
-              <span>₹</span>
-              {product.sellPrice}
+              {/* <span>₹</span> */}
+              {sellPriceIndia}
             </p>
             <p className="text-lg text-slate-500 line-through">
-              <span>₹</span>
-              {product.price}
+              {/* <span>₹</span> */}
+              {priceIndia}
             </p>
           </div>
 
@@ -119,4 +142,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);

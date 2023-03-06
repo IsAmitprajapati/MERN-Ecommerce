@@ -5,17 +5,21 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { isLoading } from "./redux/loadingSlice";
+import { getProducts } from "./redux/productSlice";
 
 function App() {
   const isLoadingState = useSelector((state) => state.loadingData.isLoading);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(isLoading(false));
-  //   }, 3000);
-  // }, []);
+  useEffect(() => {
+    dispatch(getProducts())
+  }, []);
+
+
+  // useLayoutEffect(()=>{
+  //   dispatch(getProducts())
+  // },[])
   return (
     <>
       <div className="min-w-[280px]">

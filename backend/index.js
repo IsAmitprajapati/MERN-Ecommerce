@@ -5,9 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-app.use(cors(
-  origin : "https://mern-ecommerce-frontend-nu.vercel.app"
-));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 // const router = express.Router()

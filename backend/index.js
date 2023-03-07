@@ -20,6 +20,11 @@ app.use("/product",routerProduct)
 app.use("/user",userRoutes)
 app.use("/upload",routerUpload)
 
+//testing server is running or not
+app.get("/",(req,res)=>{
+  res.send({message : "Server is running"})
+})
+
 const PORT = process.env.PORT || 8080;
 
 

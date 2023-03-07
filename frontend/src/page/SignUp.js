@@ -81,7 +81,6 @@ const SignUp = () => {
             headers: {
               "content-type": "application/json",
             },
-            mode: 'no-cors',
             body: JSON.stringify(data),
           }
         );

@@ -12,7 +12,7 @@ module.exports = signupUser = (req,res)=>{
         }
         else{ 
             const hash =  await bcrypt.hashSync(password, saltRounds);
-            const user =  await UserModel({...req.body, password : hash })
+            const user =  UserModel({...req.body, password : hash })
             const save = await user.save() 
             
             res.send({message : "User Registered Successfully" , alert : "success"})

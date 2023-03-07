@@ -78,9 +78,6 @@ const SignUp = () => {
           `${process.env.REACT_APP_SERVER_DOMAIN}/user/signup`,
           {
             method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
             body: JSON.stringify(data),
           }
         );

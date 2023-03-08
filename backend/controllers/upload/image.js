@@ -2,7 +2,7 @@ const path = require("path");
 
 
 const uploadImage = (req,res)=>{
-    res.send(JSON.stringify({fileName : req.file.filename}))  
+    res.send(JSON.stringify({fileName : req.file.filename,message : "Upload Successfully..."}))  
 } 
 
 // http://localhost:8080/upload/image/w2.png

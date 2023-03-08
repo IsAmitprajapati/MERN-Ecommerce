@@ -8,9 +8,9 @@ module.exports = signinUser = (req, res) => {
   UserModel.findOne({ email: email }, async (err, result) => {
     if (result) {
       const userPassword = result.password;
-      const checkPassword = bcrypt.compareSync(password, userPassword);
-      if (checkPassword) {
-        console.log(checkPassword);
+      // const checkPassword = bcrypt.compare(password, userPassword);
+      if (userPassword === password) {
+        // console.log(checkPassword);
         res.send({alert : "success", message : "Successfully Login", data : {
           firstName : result.firstName,
           lastName : result.lastName,

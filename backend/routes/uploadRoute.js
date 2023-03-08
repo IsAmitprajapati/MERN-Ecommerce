@@ -1,6 +1,6 @@
 const express = require("express");
 const routerUpload = express.Router();
-
+const path = require("path");
 
 const uploadMiddleware = require("../middleware/uploadFile")
 

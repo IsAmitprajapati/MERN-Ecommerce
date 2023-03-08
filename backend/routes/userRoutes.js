@@ -1,5 +1,5 @@
 const express = require("express")
-const userRoutes = express.Router()
+const userRoutes = express.Router({mergeParams : true})
 
 
 // Product router

@@ -16,7 +16,7 @@ const routerProduct = require("./routes/productRoute")
 const userRoutes = require("./routes/userRoutes")
 const routerUpload = require("./routes/uploadRoute")
 
-app.use("/product",routerProduct)
+// app.use("/product",routerProduct)
 app.use("/user",userRoutes)
 app.use("/upload",routerUpload)
 

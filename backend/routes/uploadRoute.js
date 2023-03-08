@@ -1,5 +1,5 @@
 const express = require("express");
-const routerUpload = express.Router();
+const routerUpload = express.Router({mergeParams : true});
 const path = require("path");
 
 const uploadMiddleware = require("../middleware/uploadFile")

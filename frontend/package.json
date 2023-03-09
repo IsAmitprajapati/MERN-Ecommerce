@@ -2,7 +2,6 @@
   "name": "amitelectronic",
   "version": "0.1.0",
   "private": true,
-  "proxy" : "https://mernecommerce-server.vercel.app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",

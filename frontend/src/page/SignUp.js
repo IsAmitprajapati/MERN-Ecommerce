@@ -68,9 +68,8 @@ const SignUp = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     
-    const { firstName, lastName, email, password, confirmPassword, image } =
-      data;
-    
+    const { firstName, lastName, email, password, confirmPassword, image } = data;
+    console.log(data)
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
         await dispatch(isLoading(true))
@@ -78,6 +77,9 @@ const SignUp = () => {
           `${process.env.REACT_APP_SERVER_DOMAIN}/user/signup`,
           {
             method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
             body: JSON.stringify(data),
           }
         );

@@ -12,6 +12,6 @@ module.exports =  updateProduct = async(req,res)=>{
         res.send(data)  
     }
     catch(err){
-        res.send(err)
+        res.send({message : err})
     }   
 }

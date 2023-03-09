@@ -5,6 +5,6 @@ module.exports = getProduct = async(req, res) => {
     const data = await ProductModel.find({});
     res.send(data);
   } catch (err){
-            console.log(err)
+            res.send({message : err})
   }
 };

@@ -9,6 +9,6 @@ module.exports = saveProduct = async (req, res) => {
     res.send(data);
     // console.log(ProductModel)
   } catch (err) {
-    console.log(err);
+    res.send({message : err})
   }
 };

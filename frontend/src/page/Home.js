@@ -62,6 +62,11 @@ const Home = () => {
     []
   );
 
+  const refrigerator = product.filter(
+    (el) => el.category.toLowerCase() === "refrigerator",
+    []
+  );
+
   //category list display logic
   const productAllCategoryList = [
     ...new Set([...product.map((el) => el.category)]),
@@ -261,10 +266,24 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide>
-        {loadingNumber.map((el, index) => {
-          return <CardHorizontalLoading key={index + "cartHorizontal"} />;
-        })}
+      <HorizontalCardSlide heading={"Refrigerator"}>
+        {refrigerator[0]
+          ? refrigerator.map((el) => {
+              return (
+                <CardVertical
+                  key={el._id}
+                  image={el.image[0]}
+                  id={el._id}
+                  title={el.title}
+                  category={el.category}
+                  price={el.price}
+                  sellPrice={el.sellPrice}
+                />
+              );
+            })
+          : loadingNumber.map((el, index) => {
+              return <CardHorizontalLoading key={index + "cartHorizontal"} />;
+            })}
       </HorizontalCardSlide>
       <HorizontalCardSlide>
         {loadingNumber.map((el, index) => {

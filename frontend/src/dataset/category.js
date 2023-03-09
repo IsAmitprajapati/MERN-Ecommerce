@@ -9,6 +9,7 @@ const categoryOption = [
     {id:"8", value:"cameras & photography", name : "Cameras & Photography"},
     {id:"9", value:"wired earphones", name : "WIRED EARPHONES"},
     {id:"10", value:"bluetooth speakers", name : "Bluetooth Speakers"},
+    {id:"11", value:"refrigerator", name : "Refrigerator"},
 ]
 
 export {categoryOption}

@@ -52,7 +52,7 @@ const SignIn = () => {
       alert(res.message)
       setTimeout(()=>{
         navigate("/");
-      },2000)
+      },1000)
     } else {
       alert(res.message)
     }

@@ -93,7 +93,7 @@ const SignUp = () => {
           alert(res.message)
           setTimeout(()=>{
             navigate("/signin");
-          },2000)
+          },1000)
         }
     }else{
       alert("required filed")

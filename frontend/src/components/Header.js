@@ -4,10 +4,12 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BsSearch } from "react-icons/bs";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogOut } from "../redux/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch  = useDispatch()
   const [search, setSearch] = useState("");
   const user = useSelector((state) => state.user);
   console.log(user);
@@ -113,9 +115,13 @@ const Header = () => {
         </div>
 
         <NavLink to={"signin"} className="flex items-center">
-          <button className="text-sm md:text-base h-full font-medium text-white bg-red-600 hover:bg-red-700 px-2 md:px-5 py-1 rounded-full">
+        {
+          user.data._id ? <button className="text-sm md:text-base h-full font-medium text-white bg-red-600 hover:bg-red-700 px-2 md:px-5 py-1 rounded-full" onClick={()=>dispatch(userLogOut())}>
+            Logout
+          </button> : <button className="text-sm md:text-base h-full font-medium text-white bg-red-600 hover:bg-red-700 px-2 md:px-5 py-1 rounded-full">
             Login
           </button>
+        }
         </NavLink>
       </div>
     </header>

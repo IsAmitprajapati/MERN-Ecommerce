@@ -11,7 +11,7 @@ export const userSlice = createSlice({
             state.data = action.payload
         },
         userLogOut : (state,action)=>{
-
+            state.data = {}
         },
         addItemCart : (state,action)=>{
 

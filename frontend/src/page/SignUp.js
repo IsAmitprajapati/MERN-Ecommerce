@@ -69,7 +69,7 @@ const SignUp = () => {
     e.preventDefault();
     
     const { firstName, lastName, email, password, confirmPassword, image } = data;
-    console.log(data)
+    // console.log(data)
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
         await dispatch(isLoading(true))
@@ -84,7 +84,7 @@ const SignUp = () => {
           }
         );
         const res = await fetchdata.json();
-        console.log(res);
+        // console.log(res);
         
         await dispatch(isLoading(false))
         if(res.alert === "error"){
@@ -95,7 +95,6 @@ const SignUp = () => {
             navigate("/signin");
           },2000)
         }
-      
     }else{
       alert("required filed")
     }

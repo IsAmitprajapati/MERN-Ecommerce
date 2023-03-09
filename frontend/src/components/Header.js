@@ -4,11 +4,14 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BsSearch } from "react-icons/bs";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  
+  const user = useSelector((state) => state.user);
+  console.log(user);
+
   console.log(search);
   useEffect(() => {
     if (search) {
@@ -16,8 +19,8 @@ const Header = () => {
       if (flag) {
         flag = false;
         setTimeout(() => {
-          navigate(`/search?q=${search}`.toLowerCase(),{
-            state : search
+          navigate(`/search?q=${search}`.toLowerCase(), {
+            state: search,
           });
           flag = true;
         }, 1000);
@@ -73,28 +76,40 @@ const Header = () => {
               ` ${isActive ? "rounded-full text-slate-800" : ""}`
             }
           >
-            <div className="cursor-pointer hover:text-slate-800 text-2xl md:text-3xl drop-shadow">
-              <CgProfile />
+            <div className="cursor-pointer hover:text-slate-800 text-2xl md:text-3xl drop-shadow h-8 w-8 overflow-hidden rounded-full flex justify-center items-center">
+              {user.data.image ? (
+                <img src={user.data.image} loading="lazy" className="w-full h-full" />
+              ) : (
+                <CgProfile />
+              )}
             </div>
           </NavLink>
           {/* menu product upload  */}
-          <div className="text-base  absolute whitespace-nowrap p-2 rounded hidden group-hover:flex flex-col -translate-x-1/3 bg-white drop-shadow-md transition-all duration-200">
-            <div className="absolute -top-2 translate-x-1/3 w-full -shadow">
-              <div className="bg-red-500 w-0 h-0 border-b-8 border-l-8 border-r-8 border-t-0 bg-transparent border-transparent border-b-white"></div>
-            </div>
-            <Link
-              to={"profile"}
-              className="hover:bg-slate-200 rounded px-2 py-1 text-center font-medium"
-            >
-              Amit Prajapati
-            </Link>
-            <Link
-              to={"upload"}
-              className="hover:bg-slate-200 rounded px-2 py-1"
-            >
-              New product
-            </Link>
-          </div>
+          {user.data._id && (
+            <>
+              <div className="text-base  absolute whitespace-nowrap p-2 rounded hidden group-hover:flex flex-col -translate-x-1/3 bg-white drop-shadow-md transition-all duration-200">
+                <div className="absolute -top-2 translate-x-1/3 w-full -shadow">
+                  <div className="bg-red-500 w-0 h-0 border-b-8 border-l-8 border-r-8 border-t-0 bg-transparent border-transparent border-b-white"></div>
+                </div>
+                <Link
+                  to={"profile"}
+                  className="hover:bg-slate-200 rounded px-2 py-1 text-center font-medium"
+                >
+                  {user.data.firstName} {user.data.lastName}
+                </Link>
+                {user.data.email === "prajapati5@gmail.com" && (
+                  <>
+                    <Link
+                      to={"upload"}
+                      className="hover:bg-slate-200 rounded px-2 py-1"
+                    >
+                      New product
+                    </Link>
+                  </>
+                )}
+              </div>
+            </>
+          )}
         </div>
 
         <NavLink to={"signin"} className="flex items-center">

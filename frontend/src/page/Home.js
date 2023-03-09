@@ -12,8 +12,7 @@ import RoundedLoading from "../components/RoundedLoading";
 const Home = () => {
   const categoryLoading = new Array(12).fill(null);
   const product = useSelector((state) => state.products.allProduct);
-
-  console.log(product);
+  // console.log(product);
 
   const loadingNumber = new Array(15).fill(null);
   useEffect(() => {
@@ -76,7 +75,7 @@ const Home = () => {
       );
     }
  
-  console.log(productAllCategoryOneProduct);
+  // console.log(productAllCategoryOneProduct);
   return (
     <div className="p-1">
       <div className="p-2 flex flex-row items-baseline    gap-4 overflow-scroll scrollbar-none scroll-smooth duration-150">

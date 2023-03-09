@@ -5,6 +5,7 @@ import { BiShow, BiHide } from "react-icons/bi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { isLoading } from "../redux/loadingSlice";
 import { useDispatch } from "react-redux";
+import { userLogin } from "../redux/userSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -44,9 +45,11 @@ const SignIn = () => {
       }
     );
     const res = await fetchData.json();
-    console.log(res);
+    // console.log(res);
     dispatch(isLoading(false))
     if (res.alert == "success") {
+      dispatch(userLogin(res.data))
+      alert(res.message)
       setTimeout(()=>{
         navigate("/");
       },2000)

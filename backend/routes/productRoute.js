@@ -1,6 +1,7 @@
 const express = require("express")
 const routerProduct = express.Router()
-
+const cors = require("cors");
+routerProduct.use(cors())
 
 // Product router
 const getProduct = require("../controllers/product/getProduct")

@@ -1,5 +1,7 @@
 const express = require("express")
 const userRoutes = express.Router()
+const cors = require("cors");
+userRoutes.use(cors())
 
 
 // Product router

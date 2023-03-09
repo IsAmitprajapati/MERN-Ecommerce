@@ -1,6 +1,7 @@
 const express = require("express");
 const routerUpload = express.Router();
-const path = require("path");
+const cors = require("cors");
+routerUpload.use(cors())
 
 const uploadMiddleware = require("../middleware/uploadFile")
 

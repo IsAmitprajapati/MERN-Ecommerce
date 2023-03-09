@@ -47,8 +47,11 @@ const SignIn = () => {
     console.log(res);
     dispatch(isLoading(false))
     if (res.alert == "success") {
-      navigate("/");
+      setTimeout(()=>{
+        navigate("/");
+      },2000)
     } else {
+      alert(res.message)
     }
   };
 

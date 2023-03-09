@@ -91,6 +91,9 @@ const SignUp = () => {
           alert(res.message)
         }else{
           alert(res.message)
+          setTimeout(()=>{
+            navigate("/signin");
+          },2000)
         }
       
     }else{

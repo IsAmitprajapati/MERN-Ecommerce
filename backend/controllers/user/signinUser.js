@@ -9,8 +9,8 @@ module.exports = signinUser = (req, res) => {
     if (result) {
       const userPassword = result.password;
       // const checkPassword = bcrypt.compare(password, userPassword);
-      if (userPassword === password) {
-        // console.log(checkPassword);
+      // console.log(checkPassword);
+      if (userPassword == password) {
         res.send({alert : "success", message : "Successfully Login", data : {
           firstName : result.firstName,
           lastName : result.lastName,

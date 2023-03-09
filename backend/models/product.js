@@ -3,11 +3,11 @@ const mongoose = require("mongoose")
 
 const productSchema = new mongoose.Schema({
     // _id : ObjectId,
-    name : String,
+    title : String,
     description : String,
     brand : String,
     image : Array,
-    actualPrice : Number,
+    price : Number,
     sellPrice : Number,
     category : String,
 })

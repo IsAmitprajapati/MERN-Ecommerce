@@ -26,10 +26,11 @@ const CardHorizontal = ({ image, id , title ,category,price,sellPrice}) => {
         <div
           className="min-w-[120px] min-h-[120px] md:min-w-[145px] md:min-h-[144px] h-32 w-32 p-1 md:px-1 md:py-1 bg-slate-200 rounded "
         >
-          <img
+        {image && <img
             src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + image}
             className="w-full h-full hover:scale-105 transition-all"
           />
+        }
         </div>
         <div className="w-full flex flex-col gap-1 justify-center md:px-3 md:py-3 pl-0">
           <h2 className="w-full font-medium text-slate-700 title text-lg my-0 min-h-[22px]">{title}</h2>

@@ -1,35 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import Logo from "./Logo";
 import { FaShoppingCart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BsSearch } from "react-icons/bs";
-import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogOut } from "../redux/userSlice";
+import { handleSearchProductLoading } from "../redux/productSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch  = useDispatch()
-  const [search, setSearch] = useState("");
+  const location = useLocation()
   const user = useSelector((state) => state.user);
-  console.log(user);
+  const [search,setSearch] = useState("")
 
-  console.log(search);
-  useEffect(() => {
-    if (search) {
-      let flag = true;
-      if (flag) {
-        flag = false;
-        setTimeout(() => {
-          navigate(`/search?q=${search}`.toLowerCase(), {
-            state: search,
-          });
-          flag = true;
-        }, 1000);
-      }
+
+  useEffect(()=>{
+    setSearch(location.search.slice(3))
+  },[])
+
+
+  const handleSearch = (e)=>{
+    const {value} = e.target
+      setSearch(value)
+    if(value){
+      navigate(`/search?q=${value}`.toLowerCase());
     }
-  }, [search]);
-
+    else{
+      navigate(`/search`);
+    }
+  }
   return (
     <header className="h-16 shadow flex items-center justify-between px-2 md:px-4 fixed w-full bg-white z-50 ">
       <div className="flex justify-start">
@@ -48,9 +49,8 @@ const Header = () => {
           type="text"
           placeholder="Search product here..."
           className="min-w-max w-full border-none outline-none placeholder:text-sm"
-          onChange={(e) => setSearch(e.target.value)}
-          name="search"
-          value={search}
+          onChange={handleSearch}
+          value={search}         
         />
         <div className="h-full p-2 px-4  rounded-r-full  cursor-pointer bg-red-600 hover:bg-red-700 text-white font-bold">
           <BsSearch />

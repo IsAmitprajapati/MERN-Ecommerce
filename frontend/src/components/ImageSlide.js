@@ -3,6 +3,23 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
+import ImageSample from "../assest/smartphone_laptop1.jpg"
+
+import ImageSample1 from "../assest/banner/img1.webp"
+import ImageSample1_mobile from "../assest/banner/img1_mobile.jpg"
+
+import ImageSample2 from "../assest/banner/img2.webp"
+import ImageSample2_mobile from "../assest/banner/img2_mobile.webp"
+
+import ImageSample3 from "../assest/banner/img3.jpg"
+import ImageSample3_mobile from "../assest/banner/img3_mobile.jpg"
+
+import ImageSample4 from "../assest/banner/img4.jpg"
+import ImageSample4_mobile from "../assest/banner/img4_mobile.jpg"
+
+
+import ImageSample5 from "../assest/banner/img5.webp"
+import ImageSample5_mobile from "../assest/banner/img5_mobile.png"
 
 const ImageSlide = ({
   image1,
@@ -35,7 +52,7 @@ const ImageSlide = ({
   };
 
   useEffect(() => {
-    const interval = setInterval(handleAutomaticSlide, 5000);
+    const interval = setInterval(handleAutomaticSlide, 7000);
     return ()=>{
       clearInterval(interval)
     }
@@ -72,39 +89,47 @@ const ImageSlide = ({
       <div className="px-2">
         <div className="flex py-3  overflow-hidden ">
           <div
-            className="bg-slate-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden  animate-pulse duration"
+            className="bg-slate-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
             ref={slideImageRef}
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
-            <img src={image1} className="h-full w-full border-none" />
+            <img src={ImageSample1} className="h-full w-full border-none object-fill hidden md:block" loading="lazy"/>
+            <img src={ImageSample1_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
           </div>
           <div
-            className="bg-red-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden  animate-pulse "
+            className="bg-red-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   "
             ref={slideImageRef}
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
-            <img src={image2} className="h-full w-full border-none" />
+            <img src={ImageSample2} className="h-full w-full border-none object-cover hidden md:block" loading="lazy" />
+            <img src={ImageSample2_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
           </div>
           <div
-            className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden  animate-pulse duration"
+            className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
             ref={slideImageRef}
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
-            <img src={image3} className="h-full w-full border-none" />
+            {/* <img src={image3} className="h-full w-full border-none" /> */}
+            <img src={ImageSample3} className="h-full w-full border-none object-cover hidden md:block" loading="lazy"/>
+            <img src={ImageSample3_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
           </div>
           <div
-            className="bg-orange-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden  animate-pulse duration"
+            className="bg-orange-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
             ref={slideImageRef}
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
-            <img src={image5} className="h-full w-full border-none" />
+            {/* <img src={image4} className="h-full w-full border-none" /> */}
+            <img src={ImageSample4} className="h-full w-full border-none object-cover hidden md:block" loading="lazy"/>
+            <img src={ImageSample4_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
           </div>
           <div
-            className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden  animate-pulse duration"
+            className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
             ref={slideImageRef}
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
-            <img src={image5} className="h-full w-full border-none" />
+            {/* <img src={image5} className="h-full w-full border-none" /> */}
+            <img src={ImageSample5} className="h-full w-full border-none object-fill hidden md:block" loading="lazy"/>
+            <img src={ImageSample5_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
           </div>
         </div>
       </div>

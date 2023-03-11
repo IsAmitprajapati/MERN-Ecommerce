@@ -310,26 +310,8 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide>
-        {loadingNumber.map((el, index) => {
-          return <CardHorizontalLoading key={index + "cartHorizontal"} />;
-        })}
-      </HorizontalCardSlide>
-      <HorizontalCardSlide>
-        {loadingNumber.map((el, index) => {
-          return <CardHorizontalLoading key={index + "cartHorizontal"} />;
-        })}
-      </HorizontalCardSlide>
-      <HorizontalCardSlide>
-        {loadingNumber.map((el, index) => {
-          return <CardHorizontalLoading key={index + "cartHorizontal"} />;
-        })}
-      </HorizontalCardSlide>
-      <HorizontalCardSlide>
-        {loadingNumber.map((el, index) => {
-          return <CardHorizontalLoading key={index + "cartHorizontal"} />;
-        })}
-      </HorizontalCardSlide>
+    
+      
 
       <div className="my-5"></div>
     </div>

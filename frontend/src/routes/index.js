@@ -1,6 +1,7 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import App from "../App";
 import Cart from "../page/Cart";
+import CategoryWise from "../page/CategoryWise";
 import ForgotPassword from "../page/ForgotPassword";
 import Home from "../page/Home";
 import Product from "../page/Product";
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
             <Route path="/upload" element={<Upload/>}/>
             <Route path="/product/:id" element={<Product/>}/>
             <Route path="/search" element={<ProductSearch/>}/>
+            <Route path="/category/:category" element={<CategoryWise/>}/>
         </Route>
     ))
 

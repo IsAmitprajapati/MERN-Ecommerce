@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns : {
+        'autoVerticalCard' : 'repeat(auto-fit,minmax(280px,1fr))'
+      }
     },
   },
   plugins: [

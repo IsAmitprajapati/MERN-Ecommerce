@@ -65,7 +65,7 @@ const ProductCard = ({ product }) => {
       <div className="flex md:flex-col gap-3  md:justify-start items-center  my-2 md:-order-1 max-h-96 overflow-scroll scrollbar-none">
         {product.image.map((el) => {
           return (
-            <div className={`w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer flex items-center justify-center p-1 ${productImage === (process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el) ? "border-2 border-slate-300" : ""}`}>
+            <div className={`w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer flex items-center justify-center p-1 ${productImage === (process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el) ? "border-2 border-red-500" : ""}`}>
               <img
                 key={el}
                 src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el}
@@ -83,9 +83,10 @@ const ProductCard = ({ product }) => {
         {isMagnified && (
           <div className="min-h-[300px] w-full h-full min-w-[500px] bg-slate-100 rounded  absolute left-0 shadow-md overflow-hidden drop-shadow hidden lg:block transition-all max-h-96 max-w-sm">
             <div
-              className="w-full h-full bg-slate-400 scale-110"
+              className="w-full h-full bg-slate-400 scale-110 bg-no-repeat"
               style={{
                 background: `url(${productImage})`,
+                backgroundRepeat : "no-repeat",
                 backgroundPosition: `${imageCursorPosition.x * 100}% ${
                   imageCursorPosition.y * 100
                 }%`,

@@ -152,7 +152,7 @@ const CategoryWise = () => {
 
         </div>
       </div> */}
-      <div className="grid grid-cols-categorySearch">
+      <div className="grid-cols-categorySearch hidden lg:grid">
         <div className="shadow-md relative ">
           <div className={` w-full transition-all`}>
             <p className="uppercase text-slate-400 py-2 px-1 border ">

@@ -243,7 +243,7 @@ const CategoryWise = () => {
 
         {/* filter result display here  */}
         <div className="p-2 md:p-4">
-          <p className="text-slate-800 font-medium py-1">Search Results : <span className="text-sm md:text-base">(Showing 1 – {categoryFilterWise.length} products )</span></p>
+          <p className="text-slate-800 font-medium py-1">Search Results : <span className="text-sm md:text-base whitespace-nowrap">(Showing 1 – {categoryFilterWise.length} products )</span></p>
           <div className="grid grid-cols-autoVerticalCard justify-items-center  gap-5">
             {categoryFilterWise[0] && !isPending
               ? categoryFilterWise.map((el) => {

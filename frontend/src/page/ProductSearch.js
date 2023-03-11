@@ -33,7 +33,7 @@ const ProductSearch = () => {
 
   return (
     <div className="p-2 md:p-4">
-      {/* <div >{data.message} :</div> */}
+       <p className="text-slate-800 font-medium py-1">Search Results : (Showing 1 – {data?.data?.length} products )</p>
       <div className="gap-2 md:gap-4 flex flex-wrap justify-center">
         {!loading && location.search  && data?.data[0] ? (
            

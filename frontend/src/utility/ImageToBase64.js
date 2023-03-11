@@ -11,3 +11,6 @@ function ImageToBase64(file){
 }
 
 export default ImageToBase64
+
+
+

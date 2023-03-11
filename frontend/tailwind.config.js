@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns : {
-        'autoVerticalCard' : 'repeat(auto-fit,minmax(280px,1fr))'
+        'autoVerticalCard' : 'repeat(auto-fit,minmax(280px,1fr))',
+        'categorySearch' : '220px 1fr'
       }
     },
   },

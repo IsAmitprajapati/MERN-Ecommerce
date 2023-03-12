@@ -74,14 +74,11 @@ const CategoryWise = () => {
     ...new Set([...product.map((el) => el.category)]),
   ].sort();
 
+  //   const [paginationData,setPaginationData] = useState([])
 
-//   const [paginationData,setPaginationData] = useState([])
-    
-//   const handlePagination =  ()=>{
+  //   const handlePagination =  ()=>{
 
-//   }
-
-  
+  //   }
 
   return (
     <div>
@@ -152,7 +149,7 @@ const CategoryWise = () => {
 
         </div>
       </div> */}
-      <div className="grid grid-cols-categorySearch ">
+      <div className="grid md:grid-cols-categorySearch ">
         <div className="shadow-md relative hidden lg:block">
           <div className={` w-full transition-all`}>
             <p className="uppercase text-slate-400 py-2 px-1 border ">
@@ -203,7 +200,7 @@ const CategoryWise = () => {
                 className="w-full"
                 min={0}
                 value={priceRange}
-                max={maxPriceRange+1}
+                max={maxPriceRange + 1}
                 onChange={handlePriceRange}
               />
               <div className="text-xs flex justify-between">
@@ -224,7 +221,7 @@ const CategoryWise = () => {
             <div className=" ">
               {productAllCategoryList.map((el) => {
                 return (
-                  <Link to={"/category/"+el}>
+                  <Link to={"/category/" + el}>
                     <div className="flex gap-2 text-slate-800 py-2 px-3">
                       <input
                         type={"checkbox"}
@@ -239,12 +236,16 @@ const CategoryWise = () => {
           </div>
         </div>
 
-
-
         {/* filter result display here  */}
         <div className="p-2 md:p-4">
-          <p className="text-slate-800 font-medium py-1 whitespace-nowrap">Search Results : <span className="text-sm md:text-base ">(Showing 1 – {categoryFilterWise.length} products )</span></p>
-          <div className="grid grid-cols-autoVerticalCard justify-items-center  gap-5">
+          <p className="text-slate-800 font-medium py-1 whitespace-nowrap">
+            Search Results :{" "}
+            <span className="text-sm md:text-base ">
+              (Showing 1 – {categoryFilterWise.length} products )
+            </span>
+          </p>
+          
+          <div className="grid grid-cols-autoVerticalCard  justify-items-center gap-5 ">
             {categoryFilterWise[0] && !isPending
               ? categoryFilterWise.map((el) => {
                   return (
@@ -256,6 +257,8 @@ const CategoryWise = () => {
                       category={el.category}
                       price={el.price}
                       sellPrice={el.sellPrice}
+                      description={el.description}
+                      brand={el.brand}
                     />
                   );
                 })
@@ -265,7 +268,7 @@ const CategoryWise = () => {
           </div>
 
           {/* pagination page  */}
-        {/* <div className="flex gap-4 my-5 py-2 justify-center items-center border-t border-b">
+          {/* <div className="flex gap-4 my-5 py-2 justify-center items-center border-t border-b">
             <div className="min-w-[25px] min-h-[25px] font-semibold text-white flex justify-center items-center rounded-full bg-red-600 cursor-pointer">1</div>
             <div className="">2</div>
             <div className="">3</div>
@@ -274,8 +277,6 @@ const CategoryWise = () => {
             <div className="">6</div>
         </div> */}
         </div>
-
-        
       </div>
     </div>
   );

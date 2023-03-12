@@ -112,6 +112,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -131,6 +133,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -150,6 +154,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -169,6 +175,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -188,6 +196,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -207,6 +217,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -226,6 +238,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -245,6 +259,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -264,6 +280,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -283,6 +301,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
@@ -303,6 +323,8 @@ const Home = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })

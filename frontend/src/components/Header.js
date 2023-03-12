@@ -15,6 +15,7 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const [search,setSearch] = useState("")
 
+  console.log(user.cartItem.length)
 
   useEffect(()=>{
     setSearch(location.search.slice(3))
@@ -67,7 +68,8 @@ const Header = () => {
           <div className="relative cursor-pointer hover:text-slate-800">
             <FaShoppingCart />
             <p className="absolute text-xs m-0 text-center -top-1 -right-1 px-1 py-0 rounded-full bg-red-600 hover:bg-red-700 text-white ">
-              0
+              {user.cartItem.length}
+              
             </p>
           </div>
         </NavLink>

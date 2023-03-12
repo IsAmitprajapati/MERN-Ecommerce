@@ -94,7 +94,7 @@ const ImageSlide = ({
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
             <img src={ImageSample1} className="h-full w-full border-none object-fill hidden md:block" loading="lazy"/>
-            <img src={ImageSample1_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
+            <img src={ImageSample1_mobile} className="h-full w-full border-none object-cover md:hidden" loading="lazy"/>
           </div>
           <div
             className="bg-red-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   "
@@ -102,7 +102,7 @@ const ImageSlide = ({
             style={{ transform: `translateX(${-translateImage}%)` }}
           >
             <img src={ImageSample2} className="h-full w-full border-none object-cover hidden md:block" loading="lazy" />
-            <img src={ImageSample2_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
+            <img src={ImageSample2_mobile} className="h-full w-full border-none object-cover md:hidden" loading="lazy"/>
           </div>
           <div
             className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
@@ -120,7 +120,7 @@ const ImageSlide = ({
           >
             {/* <img src={image4} className="h-full w-full border-none" /> */}
             <img src={ImageSample4} className="h-full w-full border-none object-cover hidden md:block" loading="lazy"/>
-            <img src={ImageSample4_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
+            <img src={ImageSample4_mobile} className="h-full w-full border-none object-cover md:hidden" loading="lazy"/>
           </div>
           <div
             className="bg-blue-200 min-w-full h-52 md:h-72 rounded transition-all max-w-full overflow-hidden   duration"
@@ -129,7 +129,7 @@ const ImageSlide = ({
           >
             {/* <img src={image5} className="h-full w-full border-none" /> */}
             <img src={ImageSample5} className="h-full w-full border-none object-fill hidden md:block" loading="lazy"/>
-            <img src={ImageSample5_mobile} className="h-full w-full border-none object-fill md:hidden" loading="lazy"/>
+            <img src={ImageSample5_mobile} className="h-full w-full border-none object-cover md:hidden" loading="lazy"/>
           </div>
         </div>
       </div>

@@ -12,10 +12,16 @@ const Product = () => {
   const product = useSelector((state) => state.products.allProduct);
   console.log(params.id);
 
-  const productById = product.filter(useCallback((el) => el._id === params.id,[params.id]), []);
+  const productById = product.filter(
+    useCallback((el) => el._id === params.id, [params.id]),
+    []
+  );
 
-  const categoryRelated = productById[0]  && productById[0].category
-  const relatedProduct = product.filter((el) => el.category === categoryRelated, []); 
+  const categoryRelated = productById[0] && productById[0].category;
+  const relatedProduct = product.filter(
+    (el) => el.category === categoryRelated,
+    []
+  );
   console.log(productById);
 
   const loadingDataSample = new Array(10).fill(null);
@@ -37,7 +43,7 @@ const Product = () => {
       </h2>
 
       <div className=" gap-2 md:gap-4 lg:gap-6 flex flex-wrap justify-center lg:justify-start min-h-[200px]">
-      {relatedProduct[0]
+        {relatedProduct[0]
           ? relatedProduct.map((el) => {
               return (
                 <CardVertical
@@ -48,62 +54,14 @@ const Product = () => {
                   category={el.category}
                   price={el.price}
                   sellPrice={el.sellPrice}
+                  description={el.description}
+                  brand={el.brand}
                 />
               );
             })
           : loadingNumber.map((el, index) => {
               return <CardVertical key={index + "cartHorizontal"} />;
             })}
-      </div>
-
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
-      </div>
-      <div className="overflow-scroll scrollbar-none">
-        <HorizontalCardSlide>
-          {loadingNumber.map((el, index) => {
-            return <CardHorizontal key={index + "cartHorizontal"} />;
-          })}
-        </HorizontalCardSlide>
       </div>
     </div>
   );

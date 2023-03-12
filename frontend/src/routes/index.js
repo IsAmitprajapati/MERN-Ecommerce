@@ -1,5 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import App from "../App";
+import ProtectedRoute from "../components/ProtectedRoute";
 import Cart from "../page/Cart";
 import CategoryWise from "../page/CategoryWise";
 import ForgotPassword from "../page/ForgotPassword";
@@ -17,7 +18,7 @@ const router = createBrowserRouter(
             <Route index element={<Home/>}/>
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path="/forgotpassword" element={<ForgotPassword/>}/>
             <Route path="/upload" element={<Upload/>}/>

@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const user = useSelector((state)=>state.user)
-
+console.log(user)
   //address content
   const [showAdd, setShowAdd] = useState(false);
   const [addressDetails, setAddressDetails] = useState({
@@ -87,8 +87,6 @@ const Profile = () => {
     e.preventDefault()
     console.log(profileUpdateState)
     setShowProfileUpdata(false)
-
-
   }
   return (
     <div className="p-2 md:p-4 md:gap-4">

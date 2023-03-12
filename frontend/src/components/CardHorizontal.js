@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addItemCart } from "../redux/userSlice";
 
-const CardHorizontal = ({ image, id , title ,category,price,sellPrice}) => {
-  
+const CardHorizontal = ({ image, id , title ,category,price,sellPrice,description,brand}) => {
+  const dispatch = useDispatch()
   const priceIndia = price && price.toLocaleString("en-IN", {
     maximumFractionDigits: 0,
     style: "currency",
@@ -19,6 +21,16 @@ const CardHorizontal = ({ image, id , title ,category,price,sellPrice}) => {
     e.stopPropagation()
     e.preventDefault()
     // alert("hii")
+    dispatch(addItemCart({
+      _id : id,
+      title : title,
+      description : description,
+      image : image,
+      price : price,
+      sellPrice : sellPrice,
+      category : category,
+      brand : brand
+    }))
   }
   return (
     <Link to={`/product/${id}`}>

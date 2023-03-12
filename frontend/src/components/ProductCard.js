@@ -1,9 +1,12 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import googleImage from "../assest/GoogleLogo.png";
 import { MdOutlineStarHalf, MdOutlineStarPurple500 } from "react-icons/md";
+import { addItemCart } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const ProductCard = ({ product }) => {
   const [isMagnified, setIsMagnified] = useState(false);
+  const dispatch = useDispatch()
   const [imageCursorPosition, setImageCursorPosition] = useState({
     x: 0,
     y: 0,
@@ -50,12 +53,30 @@ const ProductCard = ({ product }) => {
     style: "currency",
     currency: "INR",
   });
+
+
+  const handleAddToCart = (e)=>{
+    e.stopPropagation()
+    e.preventDefault()
+    // alert("hii")
+    dispatch(addItemCart({
+      _id : product._id,
+      title : product.title,
+      description : product.description,
+      image : product.image,
+      price : product.price,
+      sellPrice : product.sellPrice,
+      category : product.category,
+      brand : product.brand
+    }))
+  }
+  
   return (
     <div className="md:flex w-full max-w-6xl md:h-auto gap-2 relative ">
       <div className="md:w-1/2 min-h-[300px] min-w-[300px] max-h-96 max-w-sm bg-slate-100 rounded p-3 sticky flex justify-center items-center">
         <img
           src={productImage}
-          className="h-full cursor-crosshair mix-blend-multiply object-scale-down"
+          className="h-full max-h-[300px] md:max-h-[350px] cursor-crosshair mix-blend-multiply md:object-scale-down "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
@@ -83,7 +104,7 @@ const ProductCard = ({ product }) => {
         {isMagnified && (
           <div className="min-h-[300px] w-full h-full min-w-[500px] bg-slate-100 rounded  absolute left-0 shadow-md overflow-hidden drop-shadow hidden lg:block transition-all max-h-96 max-w-sm">
             <div
-              className="w-full h-full bg-slate-400 scale-110 bg-no-repeat"
+              className="w-full h-full bg-slate-400  bg-no-repeat mix-blend-multiply"
               style={{
                 background: `url(${productImage})`,
                 backgroundRepeat : "no-repeat",
@@ -128,7 +149,7 @@ const ProductCard = ({ product }) => {
             <button className="w-full max-w-[130px] py-1 border-2 px-3 rounded border-red-600 hover:border-red-700 font-medium text-red-600 hover:text-red-700 text-medium">
               Buy
             </button>
-            <button className="w-full max-w-[130px] py-1 border-2 px-3 rounded border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700 text-white font-medium">
+            <button className="w-full max-w-[130px] py-1 border-2 px-3 rounded border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700 text-white font-medium" onClick={handleAddToCart}>
               Add To Cart
             </button>
           </div>

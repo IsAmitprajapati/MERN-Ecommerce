@@ -1,8 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addItemCart } from '../redux/userSlice';
 
-const CardVertical = ({ image, id , title ,category,price,sellPrice}) => {
-  
+const CardVertical = ({ image, id , title ,category,price,sellPrice,description,brand}) => {
+    const dispatch = useDispatch()
   const priceIndia = price && price.toLocaleString("en-IN", {
     maximumFractionDigits: 0,
     style: "currency",
@@ -19,9 +21,21 @@ const CardVertical = ({ image, id , title ,category,price,sellPrice}) => {
     e.stopPropagation()
     e.preventDefault()
     // alert("hii")
+
+    dispatch(addItemCart({
+      _id : id,
+      title : title,
+      description : description,
+      image : image,
+      price : price,
+      sellPrice : sellPrice,
+      category : category,
+      brand : brand
+    }))
+
   }
   return (
-    <Link to={`/product/${id}`} onClick={()=>window.scrollTo({top : 0, behavior : "smooth"})}>
+    <Link to={`/product/${id}`} onClick={()=>window.scrollTo({top : 0, behavior : "smooth"})} className="block justify-self-center">
     <div className="w-full min-w-[280px] max-w-[280px]  shadow rounded bg-white-300  cursor-pointer  gap-1 flex flex-col my-1">
       <div className="min-w-[130px] min-h-[160px]  max-h-[160px]   bg-slate-200 h-full p-4 flex justify-center items-center">
       {image && <img src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + image} className="h-full max-w-[140px] max-h-[140px] mix-blend-multiply"/>}

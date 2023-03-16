@@ -40,6 +40,13 @@ const Cart = () => {
   //   }
   // };
 
+
+
+  const totalPriceIndia = user.cartItem[0] && user.cartItem.reduce((acc, curr) => acc + curr.total, 0).toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "INR",
+  });
   return (
     <div className="h-full min-h-[calc(100vh-120px)] p-1">
       <div className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1">
@@ -86,15 +93,15 @@ const Cart = () => {
             <div className="flex px-3 justify-between font-medium my-2">
               <p>Total Price</p>
               <p>
-                <span className="pr-0.5">₹</span>
-                {user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}
+                {/* <span className="pr-0.5">₹</span> */}
+                {totalPriceIndia}
               </p>
             </div>
             {/* display in desktop */}
             <div className="hidden lg:flex flex-1 md:max-w-3xl lg:max-w-md h-10 w-full bg-red-600  justify-center items-center my-1 rounded cursor-pointer">
               <p className="font-bold text-base md:text-lg  text-white  md:my-1">
-                Pay <span>₹</span>
-                {user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}
+                {/* Pay <span>₹</span> */}
+                {totalPriceIndia}
               </p>
             </div>
 
@@ -130,7 +137,7 @@ const Cart = () => {
           {/* display in mobile  */}
           <div className="lg:hidden flex-1 md:max-w-3xl lg:max-w-md h-10 sticky z-10 bottom-0 left-0 right-0 w-full bg-red-600 flex justify-center items-center my-1 rounded cursor-pointer">
             <p className="font-bold text-base md:text-lg  text-white  md:my-1">
-              Pay <span>₹</span> {user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}
+              Pay <span>₹</span> {totalPriceIndia}
             </p>
           </div>
         </div>

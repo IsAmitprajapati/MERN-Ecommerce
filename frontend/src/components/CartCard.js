@@ -6,6 +6,19 @@ import { decreaseQty, deleteItemCart, increaseQty } from '../redux/userSlice';
 
 const CartCard = ({image, id , title ,category,price,sellPrice,description,brand,qty,total}) => {
   const dispatch = useDispatch()
+
+  const SellPriceIndia = sellPrice && sellPrice.toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "INR",
+  });
+
+  const totalPriceIndia = total && total.toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "INR",
+  });
+
   return (
     <div className="flex gap-2 md:gap-4 border border-slate-300 ">
             <div className="h-24 w-24 min-w-[100px] min-h-[100px] sm:min-w-[112px] sm:min-h-[112px] md:min-h-[140px] md:min-w-[140px]  lg:min-h-[144px] lg:min-w-[144px] bg-slate-200 rounded p-1 flex justify-center items-center">
@@ -24,7 +37,8 @@ const CartCard = ({image, id , title ,category,price,sellPrice,description,brand
                 {title}
               </h2>
               <p className="font-bold text-xs  md:text-base lg:text-lg  text-red-600  my-1">
-                <span>₹</span>{sellPrice}
+                {/* <span>₹</span> */}
+                {SellPriceIndia}
               </p>
               <div className="md:my-1 flex">
                 <div className="flex ">
@@ -41,7 +55,9 @@ const CartCard = ({image, id , title ,category,price,sellPrice,description,brand
                 <div className="flex ml-auto text-slate-700">
                   <p className="">Total</p>
                   <span className="px-1">:</span>
-                  <p className="font-medium"><span>₹</span>{total}</p>
+                  <p className="font-medium">
+                  {/* <span>₹</span> */}
+                  {totalPriceIndia}</p>
                 </div>
               </div>
             </div>

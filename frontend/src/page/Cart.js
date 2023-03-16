@@ -12,33 +12,33 @@ const Cart = () => {
 
   console.log(user);
 
-  const stripeURL =
-    "https://restaurant-e-commerce-server.vercel.app/create-checkout-session";
+  // const stripeURL =
+  //   "https://restaurant-e-commerce-server.vercel.app/create-checkout-session";
 
-  const handlePayment = async (e) => {
-    e.preventDefault();
-    if (user.data.email) {
-      console.log("fetc");
-      const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+  // const handlePayment = async (e) => {
+  //   e.preventDefault();
+  //   if (user.data.email) {
+  //     console.log("fetc");
+  //     const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-      const res = await fetch(stripeURL, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(cartProduct.cartProductItem),
-      });
+  //     const res = await fetch(stripeURL, {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(cartProduct.cartProductItem),
+  //     });
 
-      if (res.statusCode === 500) return;
+  //     if (res.statusCode === 500) return;
 
-      const data = await res.json();
-      // console.log(data);
-      // toast("Redirect to payment gateway");
-      stripePromise.redirectToCheckout({ sessionId: data });
-    } else {
-      // toast("your are not login!!");
-    }
-  };
+  //     const data = await res.json();
+  //     // console.log(data);
+  //     // toast("Redirect to payment gateway");
+  //     stripePromise.redirectToCheckout({ sessionId: data });
+  //   } else {
+  //     // toast("your are not login!!");
+  //   }
+  // };
 
   return (
     <div className="h-full min-h-[calc(100vh-120px)] p-1">
@@ -90,6 +90,7 @@ const Cart = () => {
                 {user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}
               </p>
             </div>
+            {/* display in desktop */}
             <div className="hidden lg:flex flex-1 md:max-w-3xl lg:max-w-md h-10 w-full bg-red-600  justify-center items-center my-1 rounded cursor-pointer">
               <p className="font-bold text-base md:text-lg  text-white  md:my-1">
                 Pay <span>₹</span>
@@ -126,6 +127,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
+          {/* display in mobile  */}
           <div className="lg:hidden flex-1 md:max-w-3xl lg:max-w-md h-10 sticky z-10 bottom-0 left-0 right-0 w-full bg-red-600 flex justify-center items-center my-1 rounded cursor-pointer">
             <p className="font-bold text-base md:text-lg  text-white  md:my-1">
               Pay <span>₹</span> {user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}

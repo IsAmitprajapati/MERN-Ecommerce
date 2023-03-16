@@ -137,7 +137,8 @@ const Cart = () => {
           {/* display in mobile  */}
           <div className="lg:hidden flex-1 md:max-w-3xl lg:max-w-md h-10 sticky z-10 bottom-0 left-0 right-0 w-full bg-red-600 flex justify-center items-center my-1 rounded cursor-pointer">
             <p className="font-bold text-base md:text-lg  text-white  md:my-1">
-              Pay <span>₹</span> {totalPriceIndia}
+              {/* Pay <span>₹</span>  */}
+              {totalPriceIndia}
             </p>
           </div>
         </div>

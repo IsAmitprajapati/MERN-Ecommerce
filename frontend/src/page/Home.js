@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import CardHorizontalLoading from "../components/CardHorizontalLoading";
 import CardVerticalLoading from "../components/CardVerticalLoading";
 import RoundedLoading from "../components/RoundedLoading";
+import ImageSlideLoading from "../components/ImageSlideLoading";
 
 const Home = () => {
   const categoryLoading = new Array(12).fill(null);
@@ -99,8 +100,9 @@ const Home = () => {
           })
         )}
       </div>
-      <ImageSlide />
-      <HorizontalCardSlide heading="Top's Airdopes">
+      {product[0] ? <ImageSlide /> : <ImageSlideLoading/> }
+      
+      <HorizontalCardSlide heading="Top's Airdopes" category="airdopes">
         {airdopes[0]
           ? airdopes.map((el) => {
               return (
@@ -121,7 +123,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Popular's Watches"}>
+      <HorizontalCardSlide heading={"Popular's Watches"} category="watches">
         {watches[0]
           ? watches.map((el) => {
               return (
@@ -142,7 +144,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Bluetooth Earphoners"}>
+      <HorizontalCardSlide heading={"Bluetooth Earphoners"} category="bluetooth earphonrs">
         {earphonrs[0]
           ? earphonrs.map((el) => {
               return (
@@ -163,7 +165,7 @@ const Home = () => {
               return <CardVerticalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Mobiles"}>
+      <HorizontalCardSlide heading={"Mobiles"} category="mobiles">
         {mobiles[0]
           ? mobiles.map((el) => {
               return (
@@ -184,7 +186,7 @@ const Home = () => {
               return <CardVerticalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Mouses"}>
+      <HorizontalCardSlide heading={"Mouses"} category="mouse">
         {mouses[0]
           ? mouses.map((el) => {
               return (
@@ -205,7 +207,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Televisions"}>
+      <HorizontalCardSlide heading={"Televisions"} category="televisions">
         {televisions[0]
           ? televisions.map((el) => {
               return (
@@ -226,7 +228,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Cameras & Photography"}>
+      <HorizontalCardSlide heading={"Cameras & Photography"} category="cameras & photography">
         {Cameras_Photography[0]
           ? Cameras_Photography.map((el) => {
               return (
@@ -247,7 +249,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Wired Earphones"}>
+      <HorizontalCardSlide heading={"Wired Earphones"} category="wired earphones">
         {wired_earphones[0]
           ? wired_earphones.map((el) => {
               return (
@@ -268,7 +270,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Bluetooth Speakers"}>
+      <HorizontalCardSlide heading={"Bluetooth Speakers"} category="bluetooth speakers">
         {bluetooth_speakers[0]
           ? bluetooth_speakers.map((el) => {
               return (
@@ -289,7 +291,7 @@ const Home = () => {
               return <CardHorizontalLoading key={index + "cartHorizontal"} />;
             })}
       </HorizontalCardSlide>
-      <HorizontalCardSlide heading={"Refrigerator"}>
+      <HorizontalCardSlide heading={"Refrigerator"} category="refrigerator">
         {refrigerator[0]
           ? refrigerator.map((el) => {
               return (
@@ -311,7 +313,7 @@ const Home = () => {
             })}
       </HorizontalCardSlide>
 
-      <HorizontalCardSlide heading={"Trimmers"}>
+      <HorizontalCardSlide heading={"Trimmers"} category="trimmers">
         {trimmers[0]
           ? trimmers.map((el) => {
               return (

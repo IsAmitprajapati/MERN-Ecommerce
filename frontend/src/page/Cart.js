@@ -11,6 +11,35 @@ const Cart = () => {
   }, []);
 
   console.log(user);
+
+  const stripeURL =
+    "https://restaurant-e-commerce-server.vercel.app/create-checkout-session";
+
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    if (user.data.email) {
+      console.log("fetc");
+      const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+      const res = await fetch(stripeURL, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartProduct.cartProductItem),
+      });
+
+      if (res.statusCode === 500) return;
+
+      const data = await res.json();
+      // console.log(data);
+      // toast("Redirect to payment gateway");
+      stripePromise.redirectToCheckout({ sessionId: data });
+    } else {
+      // toast("your are not login!!");
+    }
+  };
+
   return (
     <div className="h-full min-h-[calc(100vh-120px)] p-1">
       <div className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1">
@@ -99,12 +128,14 @@ const Cart = () => {
           </div>
           <div className="lg:hidden flex-1 md:max-w-3xl lg:max-w-md h-10 sticky z-10 bottom-0 left-0 right-0 w-full bg-red-600 flex justify-center items-center my-1 rounded cursor-pointer">
             <p className="font-bold text-base md:text-lg  text-white  md:my-1">
-              Pay <span>₹</span>200
+              Pay <span>₹</span>{user.cartItem.reduce((acc, curr) => acc + curr.total, 0)}
             </p>
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center my-4">You cart Empty</div>
+        <div className="flex justify-center items-center my-4">
+          You cart Empty
+        </div>
       )}
     </div>
   );

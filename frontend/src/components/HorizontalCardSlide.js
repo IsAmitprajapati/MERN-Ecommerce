@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import CardHorizontal from "./CardHorizontal";
 import CardVertical from "./CardVertical";
 
-const HorizontalCardSlide = ({ children, heading }) => {
+const HorizontalCardSlide = ({ children, heading,category }) => {
   const [scrollL, setScrollL] = useState(0);
   const cardSlideImage = useRef();
 
@@ -25,8 +25,9 @@ const HorizontalCardSlide = ({ children, heading }) => {
       <div className="flex items-center justify-between gap-2 md:gap-4">
         <h2 className="text-2xl font-medium capitalize my-4 px-2">{heading}</h2>
         <Link
-          to=""
+          to={`/category/${category}`}
           className="text-black hover:text-red-600 font-medium hover:underline"
+          onClick={()=>window.screenTop({ top: 0, behavior: "smooth" })}
         >
           View All
         </Link>

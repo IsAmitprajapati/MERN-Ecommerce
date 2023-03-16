@@ -43,7 +43,7 @@ const ForgotPassword = () => {
       );
       const responseData = await fetchData.json();
       console.log(responseData);
-      if (responseData.alert) {
+      if (responseData.success) {
         alert("Email send");
         setSendEmailNotDone(false);
       }

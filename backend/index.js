@@ -12,10 +12,12 @@ app.use(express.urlencoded({ extended: false }));
 const routerProduct = require("./routes/productRoute");
 const userRoutes = require("./routes/userRoutes");
 const routerUpload = require("./routes/uploadRoute");
+const routerPayment  = require("./routes/payment");
 
 app.use("/product", routerProduct);
 app.use("/user", userRoutes);
 app.use("/upload", routerUpload);
+app.use("/payment", routerPayment);
 
 const PORT = process.env.PORT || 8080;
 

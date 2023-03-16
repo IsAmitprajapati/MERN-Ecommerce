@@ -16,23 +16,24 @@ module.exports = forgotPassword = (req, res) => {
   UserModel.findOne({ email: email }, async (err, result) => {
     if(result){
       const token = jwt.sign({email : result.email},'shhhhh')
-      UserModel.updateOne({ email: result.email },{ $set : { token : token} })
+      console.log(result._id)
 
       const mailOptions = {
         from : process.env.EMAIL_FROM,
         to : email,
         subject : "Password reset",
-        text : `Check the link to reset your password http://localhost:3000/reset-password/${token}`
+        text : `Check the link to reset your password http://localhost:3000/reset-password/${result._id}`
       }
+      
       transporter.sendMail(mailOptions,(err)=>{
         if(err){
-          // console.log(err)
+          console.log(err)
           return res.status(500).send({ error: "Error sending email" });
         }
-        res.send({ message: "Password reset email sent" })
+        res.send({ message: "Password reset email sent" ,success : true})
       })
     }else{
-      res.send({message : "User not available"})
+      res.send({message : "User not available", success : false})
     }
   })
   

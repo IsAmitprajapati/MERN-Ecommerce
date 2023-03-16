@@ -1,18 +1,19 @@
 const nodemailer = require("nodemailer")
 // process.env.EMAIL_FROMprocess.env.PASSWORD_FROM
-const transporter  = nodemailer.createTransport({
+console.log(process.env.PASSWORD_FROM)
+const smtpConfig = {
     service : "gmail",
+    port : 465,
+    // secure : false,
+    ignoreTLS : true,
+    // logger : true,
+    // debug : true,
     auth : {
-            user : "prajapati.desktop@gmail.com",
-            pass : "9307961978",
+            user : process.env.EMAIL_FROM,
+            pass : process.env.PASSWORD_FROM,
     }
-})
-// transporter.verify(function (error, success) {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("Server is ready to take our messages");
-//     }
-//   });
+}
+
+const transporter  = nodemailer.createTransport(smtpConfig)
 
 module.exports =  transporter

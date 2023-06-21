@@ -59,7 +59,7 @@ const Cart = () => {
         <div className="mt-6 text-center font-medium  text-base md:text-lg lg:text-2xl py-1 px-10  bg-slate-200 rounded-md hover:bg-slate-300 transition-all cursor-pointer">Empty Cart</div>        
       </div> */}
       {user.cartItem[0] ? (
-        <div className="lg:flex w-full justify-between mt-5">
+        <div className="lg:flex w-full justify-between mt-5 relative">
           <div className="flex-1 max-w-3xl rounded">
             {user.cartItem.map((el) => {
               return (
@@ -79,7 +79,7 @@ const Cart = () => {
               );
             })}
           </div>
-          <div className="flex-1 md:max-w-3xl lg:max-w-md my-2 lg:fixed lg:right-3 w-full">
+          <div className="flex-1 md:max-w-3xl lg:max-w-md my-2 lg:sticky lg:right-3 w-full">
             <h3 className="bg-blue-500 text-white px-2 font-semibold rounded py-2">
               Summary
             </h3>

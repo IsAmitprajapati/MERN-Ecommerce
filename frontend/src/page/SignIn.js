@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import signinImage from "../assest/signin.gif";
 import GoogleImage from "../assest/GoogleLogo.png";
 import { BiShow, BiHide } from "react-icons/bi";
@@ -58,6 +58,11 @@ const SignIn = () => {
     }
   };
 
+
+  useEffect(()=>{
+
+  },[])
+  
   return (
     <div className="min-h-[calc(100vh-120px)] p-2 md:p-4 gap-3 flex flex-col justify-center ">
       <div className="mx-auto w-full max-w-sm shadow-md p-5   bg-white rounded">

@@ -15,10 +15,13 @@ module.exports = signupUser = (req, res) => {
           alert: "error",
         });
       } else {
-        // const hash =  await bcrypt.hash(password, saltRounds);
+        const hash =  await bcrypt.hash(password, saltRounds);
         // console.log(hash)
         if(confirmPassword == password){
-            const user = new UserModel(req.body);
+            const user = new UserModel({
+              ...req.body,
+              password : hash
+            });
             const save = await user.save();
             res.send({ message: "User Registered Successfully", alert: "success" });
         }else{

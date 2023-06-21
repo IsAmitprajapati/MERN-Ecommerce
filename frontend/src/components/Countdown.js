@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import sendEmailImage from "../assest/forgotpasswnedSend.gif";
+import sampleImage from '../assest/sampleImage.jpg'
 
 export default function Countdown({email,againCall}) {
     const [countdown, setCountDown] = useState(60);

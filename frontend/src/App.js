@@ -24,8 +24,10 @@ function App() {
     <>
       <div className="min-w-[280px]">
         <Header />
-        <main className="min-h-[calc(100vh-56px)] h-full   bg-slate-50 pt-16">
-          <Outlet />
+        <main className="min-h-[calc(100vh-56px)] h-full   bg-slate-50 pt-16 ">
+          <div className="max-w-[1500px] m-auto ">
+            <Outlet />
+          </div>
         </main>
         <Footer />
       </div>

@@ -3,6 +3,7 @@ import googleImage from "../assest/GoogleLogo.png";
 import { MdOutlineStarHalf, MdOutlineStarPurple500 } from "react-icons/md";
 import { addItemCart } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
+import sampleImage from '../assest/sampleImage.jpg'
 
 const ProductCard = ({ product }) => {
   const [isMagnified, setIsMagnified] = useState(false);
@@ -75,7 +76,7 @@ const ProductCard = ({ product }) => {
     <div className="md:flex w-full max-w-6xl md:h-auto gap-2 relative ">
       <div className="md:w-1/2 min-h-[300px] min-w-[300px] max-h-96 max-w-sm bg-slate-100 rounded p-3 sticky flex justify-center items-center">
         <img
-          src={productImage}
+          src={productImage || sampleImage}
           className="h-full max-h-[300px] md:max-h-[350px] cursor-crosshair mix-blend-multiply md:object-scale-down "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -89,7 +90,7 @@ const ProductCard = ({ product }) => {
             <div className={`w-16 md:w-20 h-16 md:h-20 bg-slate-200 rounded cursor-pointer flex items-center justify-center p-1 ${productImage === (process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el) ? "border-2 border-red-500" : ""}`}>
               <img
                 key={el}
-                src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el}
+                src={(process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + el) || sampleImage}
                 className="h-full mix-blend-multiply object-scale-down"
                 onMouseEnter={() => handleMouseEnterProduct(el)}
                 onClick={() => handleMouseEnterProduct(el)}

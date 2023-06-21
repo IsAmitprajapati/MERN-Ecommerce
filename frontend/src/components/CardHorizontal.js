@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addItemCart } from "../redux/userSlice";
+import sampleImage from '../assest/sampleImage.jpg'
 
 const CardHorizontal = ({ image, id , title ,category,price,sellPrice,description,brand}) => {
   const dispatch = useDispatch()
@@ -39,7 +40,7 @@ const CardHorizontal = ({ image, id , title ,category,price,sellPrice,descriptio
           className="min-w-[120px] min-h-[120px] md:min-w-[145px] md:min-h-[144px] h-32 w-32 p-1 md:px-1 md:py-1 bg-slate-200 rounded "
         >
         {image && <img
-            src={process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + image}
+            src={(process.env.REACT_APP_SERVER_DOMAIN_GET_IMAGE + image) || sampleImage}
             className="w-full h-full hover:scale-105 transition-all"
           />
         }

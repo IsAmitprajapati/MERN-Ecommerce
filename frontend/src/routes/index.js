@@ -11,6 +11,7 @@ import Profile from "../page/Profile";
 import SignIn from "../page/SignIn";
 import SignUp from "../page/SignUp";
 import Upload from "../page/Upload";
+import ResetPassoword from "../page/ResetPassoword";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
             <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+            <Route path="/reset-password/:id" element={<ResetPassoword/>}/>
             <Route path="/upload" element={<Upload/>}/>
             <Route path="/product/:id" element={<Product/>}/>
             <Route path="/search" element={<ProductSearch/>}/>

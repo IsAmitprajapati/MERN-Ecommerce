@@ -82,7 +82,7 @@ const Header = () => {
           >
             <div className="cursor-pointer hover:text-slate-800 text-2xl md:text-3xl drop-shadow h-8 w-8 overflow-hidden rounded-full flex justify-center items-center">
               {user.data.image ? (
-                <img src={user.data.image} loading="lazy" className="w-full h-full" />
+                <img src={user.data.image} loading="lazy" className="w-full h-full drop-shadow-2xl" />
               ) : (
                 <CgProfile />
               )}
@@ -101,7 +101,7 @@ const Header = () => {
                 >
                   {user.data.firstName} {user.data.lastName}
                 </Link>
-                {user.data.email === "prajapati5@gmail.com" && (
+                {(user.data.email === process.env.REACT_APP_SUPER_ADMIN_EMAIL) && (
                   <>
                     <Link
                       to={"upload"}

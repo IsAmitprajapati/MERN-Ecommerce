@@ -11,6 +11,8 @@ const categoryOption = [
     {id:"10", value:"bluetooth speakers", name : "Bluetooth Speakers"},
     {id:"11", value:"refrigerator", name : "Refrigerator"},
     {id:"12", value:"trimmers", name : "Trimmers"},
+    {id:"13", value:"processor", name : "Processor"},
+    {id:"14", value:"Printer", name : "Printer"},
 ]
 
 export {categoryOption}

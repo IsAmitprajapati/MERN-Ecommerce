@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const tokenLocalStorage = localStorage.getItem("token")
+
 const initialState = {
+  token : localStorage.getItem("token"),
   data: {
     cartItem: [],
     email: "",
@@ -15,11 +18,16 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    setToken : (state,action)=>{
+      state.token = action.payload
+    },
     userLogin: (state, action) => {
       state.data = action.payload;
     },
     userLogOut: (state, action) => {
       state.data = {};
+      state.token = ""
+      localStorage.clear()
     },
     addItemCart: (state, action) => {
       console.log(action.payload);
@@ -62,6 +70,7 @@ export const userSlice = createSlice({
 
 export const {
   userLogin,
+  setToken,
   userLogOut,
   addItemCart,
   deleteItemCart,

@@ -31,7 +31,7 @@ const Product = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [productById]);
   return (
-    <div className="p-2 md:p-4 gap-2 md:gap-4 flex flex-wrap ">
+    <div className="p-2 md:p-4 gap-2 md:gap-4 flex flex-wrap flex-col w-fit ">
       {productById[0] ? (
         <ProductCard product={productById[0]} />
       ) : (
@@ -39,10 +39,10 @@ const Product = () => {
       )}
 
       <h2 className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1">
-        Related Product
+        Recommended  Product
       </h2>
 
-      <div className=" gap-2 md:gap-4 lg:gap-6 flex flex-wrap justify-center lg:justify-start min-h-[200px]">
+      <div className=" gap-2 md:gap-4  flex flex-wrap justify-center lg:justify-start min-h-[200px]">
         {relatedProduct[0]
           ? relatedProduct.map((el) => {
               return (

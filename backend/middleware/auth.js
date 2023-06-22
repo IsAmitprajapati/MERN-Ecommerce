@@ -1,5 +1,6 @@
+const jwt = require("jsonwebtoken")
 
-const auth = (req,res,next)=>{
+async function auth(req,res,next){
     try{
         const token = req.headers.authorization.split(" ")[1]
         console.log(token)
@@ -7,14 +8,15 @@ const auth = (req,res,next)=>{
         const decode = jwt.verify(token,process.env.JWT_SECRET)
         console.log(decode)
 
-        // if(decode){
-            req.user = decode   
-            next()
-        // }
+        req.user = decode   
+        next()
+
     }
     catch(err){
-        res.json({alert : "error", message : "Invalid Input"})
+        res.status(401).json({
+            error :"Invalid input..."
+        });
     }
 }
 
-module.exports = auth
+module.exports = { auth } 

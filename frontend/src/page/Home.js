@@ -11,7 +11,7 @@ import RoundedLoading from "../components/RoundedLoading";
 import ImageSlideLoading from "../components/ImageSlideLoading";
 
 const Home = () => {
-  const categoryLoading = new Array(12).fill(null);
+  const categoryLoading = new Array(13).fill(null);
   const product = useSelector((state) => state.products.allProduct);
   // console.log(product);
 
@@ -77,11 +77,12 @@ const Home = () => {
   const productAllCategoryList = [
     ...new Set([...product.map((el) => el.category)]),
   ].sort();
+    console.log(productAllCategoryList)
   let productAllCategoryOneProduct = [];
     for (let i = 0; i < productAllCategoryList.length; i++) {
       productAllCategoryOneProduct.push(
         product.filter(
-          (el) => el.category.toLowerCase() === productAllCategoryList[i]
+          (el) => el.category.toLowerCase() === productAllCategoryList[i].toLowerCase()
         )[0]
       );
     }

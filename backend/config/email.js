@@ -3,9 +3,9 @@ const nodemailer = require("nodemailer")
 console.log(process.env.PASSWORD_FROM)
 const smtpConfig = {
     service : "gmail",
-    port : 465,
+    // port : 465,
     // secure : false,
-    ignoreTLS : true,
+    // ignoreTLS : true,
     // logger : true,
     // debug : true,
     auth : {

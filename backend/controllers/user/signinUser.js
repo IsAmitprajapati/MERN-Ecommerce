@@ -9,17 +9,16 @@ module.exports = signinUser = (req, res) => {
   UserModel.findOne({ email: email }, async (err, result) => {
     if (result) {
       const userPassword = result.password;
-      const checkPassword = bcrypt.compare(password, userPassword);
-      // console.log(checkPassword);
+      const checkPassword = await bcrypt.compare(password, userPassword);
+      console.log(checkPassword);
       if (checkPassword) {
-
           const token = jwt.sign({
             _id : result._id,
             email : result.email,
-        },process.env.JWT_SECRET,{ expiresIn : "24h"})
+        },process.env.JWT_SECRET,{ expiresIn : "12h"})
 
         res.json({
-          // alert : "",
+          alert : "success",
           message : "Successfully Login",
           token  : token
         })

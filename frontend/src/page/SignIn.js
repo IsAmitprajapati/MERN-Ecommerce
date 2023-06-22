@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import signinImage from "../assest/signin.gif";
 import GoogleImage from "../assest/GoogleLogo.png";
 import { BiShow, BiHide } from "react-icons/bi";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link,useNavigate, useParams } from "react-router-dom";
 import { isLoading } from "../redux/loadingSlice";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../redux/userSlice";
+import { setToken } from "../redux/userSlice";
+
 
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const [showPass, setShowPass] = useState(false);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -45,23 +47,19 @@ const SignIn = () => {
       }
     );
     const res = await fetchData.json();
-    // console.log(res);
     dispatch(isLoading(false))
     if (res.alert == "success") {
-      dispatch(userLogin(res.data))
-      alert(res.message)
-      setTimeout(()=>{
+      localStorage.setItem('token', res.token)
+      dispatch(setToken(res.token))
+        
+      setTimeout(() => {
         navigate("/");
-      },1000)
+      }, 1000)
+
     } else {
       alert(res.message)
     }
   };
-
-
-  useEffect(()=>{
-
-  },[])
   
   return (
     <div className="min-h-[calc(100vh-120px)] p-2 md:p-4 gap-3 flex flex-col justify-center ">
@@ -121,12 +119,12 @@ const SignIn = () => {
         </p>
       </div>
 
-      <div className="mx-auto  w-full max-w-sm shadow-md px-5 py-2  bg-white rounded flex items-center cursor-pointer select-none">
+      {/* <div className="mx-auto  w-full max-w-sm shadow-md px-5 py-2  bg-white rounded flex items-center cursor-pointer select-none">
         <img src={GoogleImage} alt="google" className="w-8 h-8" />
         <div className="text-center w-full font-semibold">
           <p>Sign in with Google</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

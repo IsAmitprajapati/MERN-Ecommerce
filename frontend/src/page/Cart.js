@@ -49,7 +49,7 @@ const Cart = () => {
   });
   return (
     <div className="h-full min-h-[calc(100vh-120px)] p-1">
-      <div className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1">
+      <div className="my-1 text-xl md:text-2xl relative font-semibold before:h-1 before:rounded-full before:bg-red-500 before:content before:absolute before:w-32 before:-bottom-1 mt-2">
         Your Shopping Cart
       </div>
       {/* <div className="min-h-[calc(100vh-200px)] flex flex-col justify-center items-center ">
@@ -144,7 +144,7 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex justify-center items-center my-4">
-          You cart Empty
+          <img src="https://restaurant-e-commerce-website-m2yp.vercel.app/static/media/empty-red.5309741357a4288595a9.gif" className="mix-blend-multiply"/>
         </div>
       )}
     </div>

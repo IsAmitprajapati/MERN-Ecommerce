@@ -9,8 +9,9 @@ const signinUser = require("../controllers/user/signinUser")
 const signupUser = require("../controllers/user/signupUser")
 const updateUser = require("../controllers/user/updateUser")
 const forgotPassword = require("../controllers/user/forgotPassword")
-const auth = require("../middleware/auth")
-const userDetails = require("../controllers/user/userDetails")
+const { auth } = require("../middleware/auth")
+const { userDetails } = require("../controllers/user/userDetails")
+const { resetPassword } = require("../controllers/user/resetPassword")
 
 
 userRoutes.post("/signin",signinUser)
@@ -22,6 +23,7 @@ userRoutes.delete("/deleteCartItem",deleteCartItem)
 
 //token is availale
 userRoutes.get("/userDetails",auth,userDetails)
+userRoutes.put("/reset-password",resetPassword)
 
 
 

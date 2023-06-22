@@ -16,13 +16,13 @@ const productSlice = createSlice({
     initialState,
     reducers : {
         handleSearchProductLoading : (state,action)=>{
-            console.log(action.payload)
+            // console.log(action.payload)
             state.searchProductLoading = action.payload
         }
     },
     extraReducers : (builder)=>{
         builder.addCase(getProducts.fulfilled, (state,action)=>{
-                console.log(action)
+                // console.log(action)
             state.allProduct = [...action.payload]
         })
     }
